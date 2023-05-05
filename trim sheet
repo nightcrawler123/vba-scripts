@@ -1,0 +1,12 @@
+Sub RemoveTrailingSpaces()
+  Dim Col As Range, combo As String
+  Application.ScreenUpdating = False
+  For Each Col In ActiveSheet.UsedRange.Columns
+    combo = Join(WorksheetFunction.Transpose(Col), Chr(1))
+    Do While InStr(combo, " " & Chr(1))
+      combo = Replace(combo, " " & Chr(1), Chr(1))
+    Loop
+    Col = WorksheetFunction.Transpose(Split(combo, Chr(1)))
+  Next
+  Application.ScreenUpdating = True
+End Su
